@@ -15,6 +15,7 @@ References:
     http://www.chrobotics.com/library/understanding-euler-angles
 '''
 # Import libraries
+import os
 import numpy as np
 import random
 import matplotlib.pyplot as plt
@@ -195,7 +196,8 @@ def error_plot():
     plt.title('Quadcopter distance from reference point over time')
     plt.xlabel('time (s)')
     plt.ylabel('error (m)')
-    plt.show()
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/position_error.png')
 
 def simple_plot():
     ''' 
@@ -231,7 +233,8 @@ def simple_plot():
     axes.legend()
 
     plt.tight_layout(pad=0.4, w_pad=2.5, h_pad=2.0)
-    plt.show()
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/simple_plot.png')
 
 
 def total_plot():
@@ -319,10 +322,11 @@ def total_plot():
 
 
     plt.tight_layout(pad=0.4, w_pad=2.5, h_pad=2.0)
-    plt.show()
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/total_plot.png')
     
 
 write_init_ang_vel_to_screen()
-#error_plot()
-#simple_plot()
+error_plot()
+simple_plot()
 total_plot()
